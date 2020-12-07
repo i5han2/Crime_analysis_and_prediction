@@ -33,12 +33,13 @@ TimeID = {'morning':0,'afternoon':1,'evening':2,'night':3}
 CityID = {'aus':0,'balt':1,'bos':2,'chic':3,'den':4,'la':5,'nyc':6}
 
 def piechart(data):
+    data1 = data
     x = np.char.array(
         ['Morning(5:00am-11:00am)', 'afternoon(11:00am-5:00pm)', 'Evening(5:00pm-10:00pm)', 'Night(10:00pm-5:00am)'])
-    y = np.array(data)
+    y = np.array(data1)
     colors = ['#2980B9', '#76D7C4', '#16A085', '#85C1E9']
     porcent = 100. * y / y.sum()
-    plt.figure(figsize=(10, 5))
+    plt.figure(1,figsize=(11, 5))
     patches, texts = plt.pie(y, colors=colors, radius=1.2)
     labels = ['{0} - {1:1.2f} %'.format(i, j) for i, j in zip(x, porcent)]
 
@@ -50,7 +51,7 @@ def piechart(data):
     plt.title("Crime prediction by time")
     plt.legend(patches, labels, loc='center right', bbox_to_anchor=(1, 0.5), fontsize=10,
                bbox_transform=plt.gcf().transFigure)
-    plt.subplots_adjust(left=0.0, bottom=0.1, right=0.96)
+    # plt.subplots_adjust(left=0.0, bottom=0.1, right=0.96)
     plt.savefig('./static/piechart.png', bbox_inches="tight")  # ,bbox_inches="tight"
     # plt.show()
 
@@ -61,14 +62,14 @@ def barchart(value):
     label = ['abuse', 'accident', 'assault', 'burglary', 'drugs', 'felony', 'kidnapping', 'other', 'sex related',
              'vandalism', 'weapon violation']
 
-    Z = [x for _, x in sorted(zip(values, label))]
+    Z = [m for _, m in sorted(zip(values, label))]
     values.sort()
     colour = ['#9ad3bc', '#9ad3bc', '#9ad3bc', '#9ad3bc', '#16a596', '#16a596', '#16a596', '#16a596', '#aa3a3a',
               '#aa3a3a', '#aa3a3a', ]
 
     ypos = np.arange(len(Z))
+    plt.figure(2,figsize=(9, 5))
     plt.title("PREDICT BY TYPE OF CRIME")
-    # plt.tight_layout()
     plt.ylabel("types of crimes")
     plt.xlabel("probabilty")
     plt.yticks(ypos, Z)
@@ -185,4 +186,4 @@ def predictCity():
 
 
 if __name__ == '__main__':
-   app.run(debug=True)
+   app.run()
