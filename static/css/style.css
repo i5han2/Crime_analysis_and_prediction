@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    background-color: #333;
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(39, 40, 42);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    font-size: x-large;
+}
+
+.navButtons {
+    display: inline-flex;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 22px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #6ac2b2;
+    color: black;
+}
+
+.active {
+    background-color: #6ac2b2;
+    color: black;
+}
+
+.topForm {
+    display: block;
+    text-align: center;
+    color: white;
+    padding: 14px 16px;
+}
+
+.viewPort {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 400px auto auto auto;
+}
+
+.Categories {
+    grid-column: 1;
+}
+
+.image {
+    grid-column: 2 / span 3;
+}
+
+.categoryForm {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+}
+
+.hehehe {
+    padding: 8px;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 8px;
+}
+
+.SubmitButton {
+    font-size: x-large;
+    grid-column: 1/span 2;
+    padding: 25px;
+    margin: 8px;
+	border: 0;
+    padding: 0;
+    color: white;
+    background-color: rgb(39, 40, 42);
+	height: 62px;
+}
+
+.SubmitButton:hover:not(.active) {
+	background-color: #6ac2b2;
+	color: black;
+}

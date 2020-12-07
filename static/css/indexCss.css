@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    background-color: rgb(39, 40, 42);
+    color: white;
+}
+
+.topForm {
+    display: block;
+    text-align: center;
+    color: white;
+}
+
+
+.SubmitButton {
+	align-self: center;
+    border: 0;
+    padding: 0;
+    overflow: hidden;
+    color: white;
+    background-color: #333;
+    width: 190px;
+	height: 62px;
+}
+
+.SubmitButton:hover:not(.active) {
+	background-color: #6ac2b2;
+	color: black;
+}

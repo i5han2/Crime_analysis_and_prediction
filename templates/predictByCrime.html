@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Predict Crimes</title>
+</head>
+
+<body>
+	<!-- navbar -->
+    <ul>
+		<li><img style="height:65px;width:65px;" src="../static/images/logo.jpg"></li>
+
+		<!-- Attach index.html path here -->
+        <li><a href="/">Home</a></li>
+		
+		<li>
+			<!-- attach form route here -->
+<!--			<div class="navButtons">-->
+<!--				<a class="active" href="predictByCrime.html">Predict Crime</a>-->
+<!--				<a href="predictByTime.html">Predict Time of Crime</a>-->
+<!--				<a href="predictByCity.html">Predict Crime by City</a>-->
+<!--			</div>-->
+			<!-- <form action="index.html" class="topForm" method="POST">
+                <label for="predict">Predict</label>
+                <select style="padding: 8px;" id="predict">
+					<option value="CrimeType">Type of crime</option>
+					<option value="CrimeTime"><a href="predictByTime.html">Time of crime</a></option>
+					<option value="CrimeCity">City</option>
+				</select>
+                <input class="SubmitButton" type="submit" value="Show Parameters">
+            </form> -->
+        </li>
+	</ul>
+
+    <div class="viewPort">
+        <div class="Categories">
+			<label class="hehehe" style="font-size: xx-large;" for="allcategories">Fill the parameters:</label>
+			
+			<!-- attach form action here -->
+            <form action="/predictCrimeType" method="POST" class="categoryForm hehehe" id="allcategories">
+				
+				<!-- City -->
+				<label class="hehehe" for="City">Choose City:</label>
+                <select name="city" class="hehehe" id="City">
+					<option value="nyc">NYC</option>
+					<option value="la">Los Angeles</option>
+					<option value="aus">Austin</option>
+					<option value="den">Denver</option>
+					<option value="balt">Baltimore</option>
+					<option value="bos">Boston</option>
+					<option value="chic">Chicago</option>
+				</select>
+				
+				<!-- Time Slot -->
+				<label class="hehehe" for="TimeOfDay">Choose Time:</label>
+                <select class="hehehe" id="TimeOfDay" name="time">
+					<option value="morning">Morning (5:00am - 11:00 am)</option>
+					<option value="afternoon">afternoon (11:00am - 5:00 pm)</option>
+					<option value="evening">evening (5:00pm - 10:00 pm)</option>
+					<option value="night">Night (10:00pm - 5:00 am)</option>
+				</select>
+
+				<!-- Lattitude -->
+                <label class="hehehe" for="Lat">Choose Lattitude:</label>
+                <input class="hehehe" id="Lat" type="number" name="latitude">
+				
+				<!-- Longitude -->
+				<label class="hehehe" for="Long">Choose Longitude:</label>
+                <input class="hehehe" id="Long" type="number" name="longitude">
+
+				<!-- Day -->
+				<label class="hehehe" for="Day">Choose Day:</label>
+				<select class="hehehe" id="Day" name="day">
+					<option value="mon">Monday</option>
+					<option value="tue">Tuesday</option>
+					<option value="wed">Wednesday</option>
+					<option value="thu">Thurseday</option>
+					<option value="fri">Friday</option>
+					<option value="sat">Saturday</option>
+					<option value="sun">Sunday</option>
+				</select>
+
+
+				<!-- Month -->
+				<label class="hehehe" for="Month">Choose Month:</label>
+				<select class="hehehe" id="Month" name="month">
+					<option value="jan">January</option>
+					<option value="feb">February</option>
+					<option value="mar">March</option>
+					<option value="apr">April</option>
+					<option value="may">May</option>
+					<option value="jun">June</option>
+					<option value="july">July</option>
+					<option value="aug">August</option>
+					<option value="sep">September</option>
+					<option value="oct">October</option>
+					<option value="nov">November</option>
+					<option value="dec">December</option>
+				</select>
+
+				<!-- Year -->
+				<label class="hehehe" for="Year">Choose Year:</label>
+				<select class="hehehe" id="Year" name="year">
+					<option value="2014">2014</option>
+					<option value="2015">2015</option>
+				</select>
+
+                <input class="SubmitButton" type="submit" value="Predict">
+            </form>
+        </div>
+        <div class="image ">
+			<!-- image route here -->
+            <img src="{{url_for('static', filename='barchart.png')}}" align="middle" />
+        </div>
+    </div>
+</body>
+
+</html>

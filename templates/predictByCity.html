@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Predict Crimes</title>
+</head>
+
+<body>
+	<!-- navbar -->
+    <ul>
+		<li><img style="height:65px;width:65px;" src="../static/images/logo.jpg""></li>
+		<!-- Attach index.html path here -->
+        <li><a href="/">Home</a></li>
+		
+		<li>
+			<!-- attach form route here -->
+<!--            <div class="navButtons">-->
+<!--				<a href="predictByCrime.html">Predict Crime</a>-->
+<!--				<a href="predictByTime.html">Predict Time of Crime</a>-->
+<!--				<a class="active" href="predictByCity.html">Predict Crime by City</a>-->
+<!--			</div>-->
+        </li>
+	</ul>
+	
+
+    <div class="viewPort">
+        <div class="Categories">
+			<label class="hehehe" style="font-size: xx-large;" for="allcategories">Fill the parameters:</label>
+			
+			<!-- attach form action here -->
+            <form action="/predictCity" method="POST" class="categoryForm hehehe" id="allcategories">
+				
+				<!-- Time Slot -->
+				<label class="hehehe" for="TimeOfDay">Choose Time:</label>
+                <select class="hehehe" id="TimeOfDay" name="time">
+					<option value="morning">Morning (5:00am - 11:00 am)</option>
+					<option value="afternoon">afternoon (11:00am - 5:00 pm)</option>
+					<option value="evening">evening (5:00pm - 10:00 pm)</option>
+					<option value="night">Night (10:00pm - 5:00 am)</option>
+				</select>
+
+				<!-- Day -->
+				<label class="hehehe" for="Day">Choose Day:</label>
+				<select class="hehehe" id="Day" name="day">
+					<option value="mon">Monday</option>
+					<option value="tue">Tuesday</option>
+					<option value="wed">Wednesday</option>
+					<option value="thu">Thurseday</option>
+					<option value="fri">Friday</option>
+					<option value="sat">Saturday</option>
+					<option value="sun">Sunday</option>
+				</select>
+
+
+				<!-- Month -->
+				<label class="hehehe" for="Month">Choose Month:</label>
+				<select class="hehehe" id="Month" name="month">
+					<option value="jan">January</option>
+					<option value="feb">February</option>
+					<option value="mar">March</option>
+					<option value="apr">April</option>
+					<option value="may">May</option>
+					<option value="jun">June</option>
+					<option value="july">July</option>
+					<option value="aug">August</option>
+					<option value="sep">September</option>
+					<option value="oct">October</option>
+					<option value="nov">November</option>
+					<option value="dec">December</option>
+				</select>
+
+				<!-- Year -->
+				<label class="hehehe" for="Year">Choose Year:</label>
+				<select class="hehehe" id="Year" name="year">
+					<option value="2014">2014</option>
+					<option value="2015">2015</option>
+				</select>
+
+				
+				<!-- Type of Crime -->
+				<label class="hehehe" for="TypeOfCrime">Choose Type of Crime:</label>
+                <select name="crime" class="hehehe" id="TypeOfCrime">
+					<option value="abuse">Abuse</option>
+					<option value="accident">Accident</option>
+					<option value="assault">Assault</option>
+					<option value="burglary">Burglary</option>
+					<option value="drugs">Drugs</option>
+					<option value="felony">Felony</option>
+					<option value="kidnapping">Kidnapping</option>
+					<option value="sex related">Sex Related Crime</option>
+					<option value="vandalism">Vandalism</option>
+					<option value="weapon violation">Weapon Violation and Threats</option>
+					<option value="other">Other</option>
+				</select>
+
+                <input class="SubmitButton" type="submit" value="Predict">
+            </form>
+        </div>
+        <div class="image ">
+			<!-- image route here -->
+            <img src="jujuHalf.jpg">
+        </div>
+    </div>
+</body>
+
+</html>
