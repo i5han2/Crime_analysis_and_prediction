@@ -7,6 +7,7 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
+import geopandas as gpd
 
 CrimeID = {
             'abuse':0,
@@ -78,6 +79,53 @@ def barchart(value):
     plt.tight_layout()
     plt.savefig('./static/barchart.png')
     # plt.show()
+
+
+
+def drawmap(inps):
+    USA = gpd.read_file("model/datasets/USA/cb_2018_us_cd116_500k.shp")
+
+    cities = {
+        'city': ['New York', 'Los Angeles', 'Denver', 'Baltimore', 'Austin', 'Boston', 'Chicago'],
+        'state': ['36', '06', '08', '24', '48', '25', '17'],
+        'probablity': inps
+    }
+
+    citiesDF = pd.DataFrame(cities, columns=['city', 'state', 'probablity'])
+
+    USA2 = USA[
+        (USA.STATEFP == '01') | (USA.STATEFP == '04') | (USA.STATEFP == '05') | (USA.STATEFP == '06') | (
+                    USA.STATEFP == '08')
+        | (USA.STATEFP == '09') | (USA.STATEFP == '10') | (USA.STATEFP == '12') | (USA.STATEFP == '13') | (
+                    USA.STATEFP == '16')
+        | (USA.STATEFP == '17') | (USA.STATEFP == '18') | (USA.STATEFP == '19') | (USA.STATEFP == '20') | (
+                    USA.STATEFP == '21')
+        | (USA.STATEFP == '22') | (USA.STATEFP == '23') | (USA.STATEFP == '24') | (USA.STATEFP == '25') | (
+                    USA.STATEFP == '26')
+        | (USA.STATEFP == '27') | (USA.STATEFP == '28') | (USA.STATEFP == '29') | (USA.STATEFP == '30') | (
+                    USA.STATEFP == '31')
+        | (USA.STATEFP == '32') | (USA.STATEFP == '33') | (USA.STATEFP == '34') | (USA.STATEFP == '35') | (
+                    USA.STATEFP == '36')
+        | (USA.STATEFP == '37') | (USA.STATEFP == '38') | (USA.STATEFP == '39') | (USA.STATEFP == '40') | (
+                    USA.STATEFP == '41')
+        | (USA.STATEFP == '42') | (USA.STATEFP == '44') | (USA.STATEFP == '45') | (USA.STATEFP == '46') | (
+                    USA.STATEFP == '47')
+        | (USA.STATEFP == '48') | (USA.STATEFP == '49') | (USA.STATEFP == '50') | (USA.STATEFP == '51') | (
+                    USA.STATEFP == '53')
+        | (USA.STATEFP == '54') | (USA.STATEFP == '55') | (USA.STATEFP == '56')
+        ]
+
+    USAUSA = USA2.merge(citiesDF, how='outer', left_on='STATEFP', right_on='state')
+    USAUSA['probablity'] = USAUSA['probablity'].fillna(0)
+    USAUSA['state'] = USAUSA['state'].fillna('meh')
+    USAUSA['city'] = USAUSA['city'].fillna('eh')
+    plt.figure(3)
+    USAUSA.plot(column='probablity', cmap='GnBu', k=3, legend=True, figsize=(10, 5))
+    plt.tight_layout()
+    plt.savefig('./static/map.png')
+
+
+
 
 with open('model/CityPredict.pkl', 'rb') as f_in1:
     cityModel = pickle.load(f_in1)
@@ -182,6 +230,7 @@ def predictCity():
     res = cityModel.predict_proba(np.array([data]))
     print([data])
     print(res[0])
+    drawmap(res[0].tolist())
     return render_template('predictByCity.html')
 
 
